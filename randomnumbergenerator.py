@@ -1,8 +1,8 @@
 #Made by Levente Bajnóczi
 #2022.01.18 (yyyy.mm.dd)
 
-from audioop import minmax
 import random
+import os
 
 
 #Set up the default values for the variables
@@ -75,8 +75,7 @@ def userInputs(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
             showOutput = False
             del showOutputtmp
         elif showOutputtmp == "1":
-            showOutput = True
-            del showOutput
+            del showOutputtmp
         else:
             userError()
 
@@ -89,6 +88,7 @@ def userError():
     print("\n\rValami hiba tortent.")
     print("Nyomj entert a kilepeshez...")
     input()
+    os._exit(-1)
 
 
 
@@ -106,7 +106,7 @@ def generator(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
         f = open(fName, "x")
         if showOutput == False:
             for i in range(amount):
-                f.write(f"{random.randint(minNum, maxNum)}\n\r")
+                f.write(f"{random.randint(minNum, maxNum)}\n")
             print("\n\r|_______________________|")
             print("| A generalt fajl neve: | ")
             print(f"| {fName} |")
@@ -115,7 +115,7 @@ def generator(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
             for i in range(amount):
                 tmp = random.randint(minNum, maxNum)
                 print(tmp)
-                f.write(f"{tmp}\n\r")
+                f.write(f"{tmp}\n")
             print("\n\r|_______________________|")
             print("| A generalt fajl neve: | ")
             print(f"| {fName} |")
