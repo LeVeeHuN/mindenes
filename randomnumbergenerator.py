@@ -1,5 +1,6 @@
 #Made by Levente Bajnóczi
 #2022.01.18 (yyyy.mm.dd)
+#ver 0.1.5
 
 import random
 import os
