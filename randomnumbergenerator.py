@@ -1,17 +1,19 @@
 #Made by Levente Bajnóczi
 #2022.01.18 (yyyy.mm.dd)
 
+from audioop import minmax
 import random
 
 
 #Set up the default values for the variables
 def setupVars():
-    returnNumbers = False #If you use this script in another script you can define if you want to return the numbers or just print them
+    returnNumbers = False #If you use this script standalone it's a constant, otherwise modifiable
     writeToFile = False #If true the output will be written to a file, otherwise it will be printed to the console
     showOutput = True #When writeToFile is True, prints the generated numbers to the console
     minNum = 0 #Determines the minimum number that can be generated
     maxNum = 100 #Determines the maximum number that can be generated
     amount = 10 #This amount of random numbers will be generated
+    userInputs(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount)
 
 
 #Here we take inputs from the user to satisfy their preference
@@ -77,9 +79,11 @@ def userInputs(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
         else:
             userError()
 
-    generator()
+    generator(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount)
 
 
+#This function will be called when the user typed in some data that is inaccurate
+#Therefor the script will exit
 def userError():
     print("\n\rValami hiba tortent.")
     print("Nyomj entert a kilepeshez...")
@@ -90,7 +94,36 @@ def userError():
 
 #This function will generate the numbers
 def generator(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
-    generatedNumbers = []
+    generatedNumbers = [] #Define a list if user wants to return the generated values. If not, then delete it later.
+
+    if returnNumbers == True:
+        for i in range(amount):
+            generatedNumbers.append(random.randint(minNum, maxNum))
+        return generatedNumbers
+    elif writeToFile == True:
+        fName = f"randomnumber_{random.randint(1000, 9999)}.txt"
+        f = open(fName, "x")
+        if showOutput == False:
+            for i in range(amount):
+                f.write(f"{random.randint(minNum, maxNum)}\n\r")
+            print("\n\r|_______________________|")
+            print("| A generalt fajl neve: | ")
+            print(f"| {fName} |")
+            print("|_______________________|")
+        else:
+            for i in range(amount):
+                tmp = random.randint(minNum, maxNum)
+                print(tmp)
+                f.write(f"{tmp}\n\r")
+            print("\n\r|_______________________|")
+            print("| A generalt fajl neve: | ")
+            print(f"| {fName} |")
+            print("|_______________________|")
+    else:
+        for i in range(amount):
+            print(random.randint(minNum, maxNum))
+        print("\n\rA kilepeshez nyomj entert...")
+        input()
     
 
 
