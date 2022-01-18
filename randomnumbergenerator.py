@@ -44,6 +44,40 @@ def userInputs(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
         try:
             maxNum = int(maxNumtmp)
             del maxNumtmp
+        except:
+            userError()
+    if amounttmp == "":
+        del amounttmp
+    else:
+        try:
+            amount = int(amounttmp)
+            del amounttmp
+        except:
+            userError()
+    if writeToFiletmp == "":
+        del writeToFiletmp
+    else:
+        if writeToFiletmp == "0":
+            writeToFile = False
+            del writeToFiletmp
+        elif writeToFiletmp == "1":
+            writeToFile = True
+            del writeToFiletmp
+        else:
+            userError()
+    if showOutputtmp == "":
+        del showOutputtmp
+    else:
+        if showOutputtmp == "0":
+            showOutput = False
+            del showOutputtmp
+        elif showOutputtmp == "1":
+            showOutput = True
+            del showOutput
+        else:
+            userError()
+
+    generator()
 
 
 def userError():
