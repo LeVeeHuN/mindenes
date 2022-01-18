@@ -18,6 +18,7 @@ def setupVars():
 
 #Here we take inputs from the user to satisfy their preference
 def userInputs(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
+    print("\n\n\r")
     print("RANDOM SZAM GENERATOR")
     print("Csak egesz szamokat adj meg minden esetben.")
     print("Az alapbeallitasok zarojelben lathatoak.")
