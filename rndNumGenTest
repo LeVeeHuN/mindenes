@@ -1,8 +1,8 @@
-import randomnumbergenerator as rg
+from randomnumbergenerator import generator
 
 
 def teszt():
-    randomNumberList = rg.generator(True, False, False, 100, 999, 10)
+    randomNumberList = generator(True, False, False, 100, 999, 10)
     
     for element in randomNumberList:
         print(element)
