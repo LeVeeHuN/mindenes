@@ -34,6 +34,8 @@ def userInputs(returnNumbers, writeToFile, showOutput, minNum, maxNum, amount):
     showOutputtmp = str(input(f"Szeretned ha a generalt szamok megjelenitesre kerulnenek? ({showOutput}): "))
     print("\n\r")
 
+    #If user selected the default parameters it won't change the values
+    #If user gave an unacceptable input, calls the userError() function and the script will terminate
     if minNumtmp == "":
         del minNumtmp
     else:
