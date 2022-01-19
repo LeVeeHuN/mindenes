@@ -1,0 +1,19 @@
+from randomnumbergenerator import generator
+from random import randint
+from timeit import default_timer as timer
+
+fName = f"jelentes_{randint(100, 999)}.txt"
+f = open(f"{fName}", "x")
+
+def timemeasure(amount):
+    timeStart = timer()
+    randomNumberList = generator(True, False, False, 0, 1000000, amount)
+    timeEnd = timer()
+    f.write(f"{amount} szám legenerálása:\n{timeEnd - timeStart} másodperc\n\n")
+
+timemeasure(10000)
+timemeasure(100000)
+timemeasure(1000000)
+timemeasure(10000000)
+
+print(f"A jelentés létrehozva az alábbi néven:\n{fName}")
